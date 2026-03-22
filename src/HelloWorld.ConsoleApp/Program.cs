@@ -1,3 +1,3 @@
 using HelloWorld.Generator;
 
-Console.WriteLine(HelloWorldMessageProvider.CreateMessage());
+Console.WriteLine(HelloWorldMessageProvider.CreateMessage())
