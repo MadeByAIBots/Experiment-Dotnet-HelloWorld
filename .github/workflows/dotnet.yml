@@ -20,10 +20,10 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./Experiment-Dotnet-HelloWorld.csproj
+        run: dotnet restore ./HelloWorld.sln
 
       - name: Build
-        run: dotnet build ./Experiment-Dotnet-HelloWorld.csproj --configuration Release --no-restore
+        run: dotnet build ./HelloWorld.sln --configuration Release --no-restore
 
       - name: Run application
-        run: dotnet run --project ./Experiment-Dotnet-HelloWorld.csproj --configuration Release --no-build
+        run: dotnet run --project ./src/HelloWorld.ConsoleApp/HelloWorld.ConsoleApp.csproj --configuration Release --no-build
