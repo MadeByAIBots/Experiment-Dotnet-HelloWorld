@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  build-and-run:
+  build-test-and-run:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +24,9 @@ jobs:
 
       - name: Build
         run: dotnet build ./HelloWorld.sln --configuration Release --no-restore
+
+      - name: Run automated tests
+        run: dotnet test ./HelloWorld.sln --configuration Release --no-build
 
       - name: Run application
         run: dotnet run --project ./src/HelloWorld.ConsoleApp/HelloWorld.ConsoleApp.csproj --configuration Release --no-build
