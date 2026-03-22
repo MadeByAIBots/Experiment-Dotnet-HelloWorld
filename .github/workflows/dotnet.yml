@@ -1,0 +1,29 @@
+name: dotnet-ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore ./Experiment-Dotnet-HelloWorld.csproj
+
+      - name: Build
+        run: dotnet build ./Experiment-Dotnet-HelloWorld.csproj --configuration Release --no-restore
+
+      - name: Run application
+        run: dotnet run --project ./Experiment-Dotnet-HelloWorld.csproj --configuration Release --no-build
